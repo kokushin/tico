@@ -2,6 +2,14 @@
 
 text icon generator
 
+### GUI mode
+
 ```
-$ tico gen 't' --font 'Roboto' --color '#fff'
+$ npm run start
+```
+
+### CLI mode
+
+```
+$ npm run gen --text 'T' --font 'Roboto' --color '#fff'
 ```
