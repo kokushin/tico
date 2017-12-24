@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon32x32.png">
     <link rel="stylesheet" href="/stylesheets/style.css"/>
   </head>
   <body>
@@ -52,6 +53,8 @@
             </div>
           </div>
         </div>
+        <pre><code>&lt;link rel="icon" type="image/png" sizes="16x16" href="/icon16x16.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/icon32x32.png"&gt;</code></pre>
       </div>
     </div>
   </body>
@@ -60,16 +63,4 @@
   <script src="/javascripts/lib/axios.min.js"></script>
   <script src="/javascripts/lib/html2canvas.min.js"></script>
   <script src="/javascripts/app.js"></script>
-
-  <!--<img src="" alt="" id="test">
-
-  <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script>
-    html2canvas(document.querySelector("#preview"), {
-      backgroundColor: null
-    }).then(canvas => {
-      const src = canvas.toDataURL()
-      document.getElementById('test').setAttribute('src', src)
-    });
-  </script>-->
 </html>

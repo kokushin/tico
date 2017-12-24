@@ -20,25 +20,31 @@ a {
 }
 
 .app_output_canvas {
+  display: inline-block;
+  padding: 20px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC);
-  padding: 20px 40px;
 }
 
 .preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
-  padding: 10px;
+  width: 160px;
+  height: 160px;
 }
 
 .preview_background {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
 }
 
 .preview_text {
-  font-size: 112px;
+  font-size: 100px;
   text-transform: uppercase;
 }
 
