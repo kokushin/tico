@@ -6,3 +6,65 @@ body {
 a {
   color: #00B7FF;
 }
+
+.app {
+  display: flex;
+}
+
+.app_input {
+  padding: 20px 40px;
+}
+
+.app_input button {
+  margin-top: 2em;
+}
+
+.app_output_canvas {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC);
+  padding: 20px 40px;
+}
+
+.preview {
+  background-color: transparent;
+  padding: 10px;
+}
+
+.preview_background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+}
+
+.preview_text {
+  font-size: 112px;
+  text-transform: uppercase;
+}
+
+.preview[data-type=round] .preview_background {
+  border-radius: 50%;
+}
+
+.preview[data-type=square] .preview_background {
+  border-radius: 40px;
+}
+
+.preview[data-background-color=white] .preview_background {
+  background-color: #fff;
+}
+
+.preview[data-background-color=black] .preview_background {
+  background-color: #000;
+}
+
+.preview[data-text-color=white] .preview_text {
+  color: #fff;
+}
+
+.preview[data-text-color=black] .preview_text {
+  color: #000;
+}
+
+
+

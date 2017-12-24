@@ -2,14 +2,8 @@
 
 text icon generator
 
-### GUI mode
+### usage
 
 ```
 $ npm run start
-```
-
-### CLI mode
-
-```
-$ npm run gen --text 'T' --font 'Roboto' --color '#fff'
 ```

@@ -2,10 +2,74 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <header class="header">
+      <h1><%= title %></h1>
+    </header>
+    <div class="app" id="app">
+      <div class="app_input">
+        <input type="text" value="x" v-model="text">
+        <div class="option">
+          <div class="option_box">
+            <p class="option_title">Type:</p>
+            <label for="type_square">
+              <input type="radio" id="type_square" value="square" v-model="type"> square
+            </label>
+            <label for="type_round">
+              <input type="radio" id="type_round" value="round" v-model="type"> round
+            </label>
+          </div>
+          <div class="option_box">
+            <p class="option_title">Text color:</p>
+            <label for="text_color_black">
+              <input type="radio" id="text_color_black" value="black" v-model="textColor"> black
+            </label>
+            <label for="text_color_white">
+              <input type="radio" id="text_color_white" value="white" v-model="textColor"> white
+            </label>
+          </div>
+          <div class="option_box">
+            <p class="option_title">Background color:</p>
+            <label for="background_color_black">
+              <input type="radio" id="background_color_black" value="black" v-model="backgroundColor"> black
+            </label>
+            <label for="background_color_white">
+              <input type="radio" id="background_color_white" value="white" v-model="backgroundColor"> white
+            </label>
+          </div>
+        </div>
+        <button @click="getImageData">Donwload</button>
+      </div>
+
+      <div class="app_output">
+        <p class="app_output_title">Preview: </p>
+        <div class="app_output_canvas">
+          <div class="preview" :data-type="type" :data-text-color="textColor" :data-background-color="backgroundColor" id="preview">
+            <div class="preview_background">
+              <div class="preview_text">{{ text }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+
+  <script src="/javascripts/lib/vue.js"></script>
+  <script src="/javascripts/lib/axios.min.js"></script>
+  <script src="/javascripts/lib/html2canvas.min.js"></script>
+  <script src="/javascripts/app.js"></script>
+
+  <!--<img src="" alt="" id="test">
+
+  <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    html2canvas(document.querySelector("#preview"), {
+      backgroundColor: null
+    }).then(canvas => {
+      const src = canvas.toDataURL()
+      document.getElementById('test').setAttribute('src', src)
+    });
+  </script>-->
 </html>
