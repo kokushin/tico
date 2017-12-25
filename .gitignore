@@ -58,4 +58,4 @@ typings/
 .env
 
 # cache files
-public/files/**
+public/files/*.zip
