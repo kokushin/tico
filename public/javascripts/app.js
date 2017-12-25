@@ -71,18 +71,19 @@
           data: data
         })
         .then(function (res) {
-          var link = res.data.link
-          var template = '<a href="'+ link +'" id="download-link">Download</a>'
-
-          document.body.insertAdjacentHTML('beforeend', template)
-          document.getElementById('download-link').click()
-          document.getElementById('download-link').remove()
-
-          _this.download = false
+          _this.donwloadZipFile(res.data.link)
         })
         .catch(function (err) {
           console.log(err)
         })
+      },
+      donwloadZipFile (link) {
+        var download = document.createElement('a')
+
+        download.href = link
+        download.click()
+
+        this.download = false
       }
     },
     mounted: function () {
