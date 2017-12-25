@@ -41,7 +41,8 @@
             </label>
           </div>
         </div>
-        <button @click="getImageData">Donwload</button>
+        <button v-if="!download" @click="getImageData">Donwload</button>
+        <button v-else disabled>Generating...</button>
       </div>
 
       <div class="app_output">

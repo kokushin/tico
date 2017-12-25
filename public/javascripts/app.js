@@ -3,6 +3,7 @@
   var app = new Vue({
     el: '#app',
     data: {
+      download: false,
       text: 'T',
       type: 'square',
       textColor: 'white',
@@ -25,6 +26,8 @@
         var imageSizeLength = _this.size.length
         var imageSize = 0
         var defaltImageSize = document.getElementById('preview').clientWidth
+
+        this.download = true
 
         new Promise(function (resolve, reject) {
           for (var i = 0; i < imageSizeLength; i++) {
@@ -62,6 +65,8 @@
         })
       },
       sendImageData (data) {
+        var _this = this
+
         axios.post('/download', {
           data: data
         })
@@ -72,6 +77,8 @@
           document.body.insertAdjacentHTML('beforeend', template)
           document.getElementById('download-link').click()
           document.getElementById('download-link').remove()
+
+          _this.download = false
         })
         .catch(function (err) {
           console.log(err)

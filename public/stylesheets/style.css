@@ -1,9 +1,16 @@
+#download-link {
+  display: none !important;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  opacity: 0;
 }
 
-#download-link { display: none !important; }
+body[data-loaded=true] {
+  opacity: 1;
+}
 
 a {
   color: #00B7FF;
@@ -34,10 +41,6 @@ a {
   background-color: transparent;
   width: 160px;
   height: 160px;
-  opacity: 0;
-}
-[data-loaded=true] .preview {
-  opacity: 1;
 }
 
 .preview_background {
