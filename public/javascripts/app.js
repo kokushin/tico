@@ -3,7 +3,7 @@
   var app = new Vue({
     el: '#app',
     data: {
-      text: 't',
+      text: 'T',
       type: 'square',
       textColor: 'white',
       backgroundColor: 'black',
@@ -71,6 +71,9 @@
           console.log(err)
         })
       }
+    },
+    mounted: function () {
+      document.body.setAttribute('data-loaded', true)
     }
   })
 

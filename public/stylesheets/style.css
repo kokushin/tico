@@ -32,6 +32,10 @@ a {
   background-color: transparent;
   width: 160px;
   height: 160px;
+  opacity: 0;
+}
+[data-loaded=true] .preview {
+  opacity: 1;
 }
 
 .preview_background {
@@ -45,7 +49,6 @@ a {
 
 .preview_text {
   font-size: 100px;
-  text-transform: uppercase;
 }
 
 .preview[data-type=round] .preview_background {
