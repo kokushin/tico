@@ -16,9 +16,7 @@
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
     "urlsafe-base64": "^1.0.0",
-    "uuid": "^3.1.0"
-  },
-  "devDependencies": {
+    "uuid": "^3.1.0",
     "nodemon": "^1.14.3"
   }
 }
