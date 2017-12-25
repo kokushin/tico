@@ -1,4 +1,5 @@
 const fs = require('fs')
+const del = require('del')
 const express = require('express')
 const base64 = require('urlsafe-base64')
 const uuidv4 = require('uuid/v4')
@@ -26,14 +27,14 @@ const createImageFile = (src, res) => {
   uuid = uuidv4()
 
   new Promise ((resolve, reject) => {
-    fs.mkdir(`cache/${uuid}`, (err) => {
+    fs.mkdir(`public/files/${uuid}`, (err) => {
       if (err) { throw err }
 
       for (let i = 0; i < src.length; i++) {
-        fs.writeFile(`cache/${uuid}/icon${src[i].size}x${src[i].size}.png`, src[i].image, (_err) => {
+        fs.writeFile(`public/files/${uuid}/icon${src[i].size}x${src[i].size}.png`, src[i].image, (_err) => {
           if (_err) { throw _err }
 
-          console.log(`Created cache/${uuid}/icon${src[i].size}x${src[i].size}.png`)
+          console.log(`Created public/files/${uuid}/icon${src[i].size}x${src[i].size}.png`)
 
           createCount++
           if (createCount === src.length) {
@@ -43,19 +44,21 @@ const createImageFile = (src, res) => {
       }
     })
   })
-    .then(() => {
-      convertZip(uuid)
+  .then(() => {
+    convertZip(uuid)
+  })
+  .then(() => {
+    res.send({
+      link: `/files/${uuid}.zip`
     })
-    .then(() => {
-      res.end()
-    })
+  })
 }
 
 const convertZip = (path) => {
   const archive = archiver.create('zip', {})
-  const output = fs.createWriteStream(`cache/${path}.zip`)
+  const output = fs.createWriteStream(`public/files/${path}.zip`)
 
-  output.on('end', () => removeCache())
+  output.on('close', () => removeCache(path))
 
   archive.on('error', (err) => {
     throw err
@@ -64,14 +67,14 @@ const convertZip = (path) => {
   archive.pipe(output)
 
   archive.glob('*.png', {
-    cwd: `cache/${path}`
+    cwd: `public/files/${path}`
   })
 
   archive.finalize()
 }
 
-const removeCache = () => {
-  console.log(1);
+const removeCache = (path) => {
+  del(`public/files/${path}`)
 }
 
 module.exports = router

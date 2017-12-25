@@ -30,33 +30,34 @@
           for (var i = 0; i < imageSizeLength; i++) {
             imageSize = _this.size[i]
 
-            html2canvas(document.querySelector("#preview"), {
+            html2canvas(document.querySelector('#preview'), {
               backgroundColor: null,
               logging: false,
               scale: imageSize / defaltImageSize,
               width: imageSize / (imageSize / defaltImageSize),
               height: imageSize / (imageSize / defaltImageSize),
             })
-              .then(function (canvas) {
-                if (imageSizeLength === 1) {
-                  data.push({
-                    size: _this.size[pushCount],
-                    src: canvas.toDataURL()
-                  })
+            .then(function (canvas) {
+              if (imageSizeLength === 1) {
+                data.push({
+                  size: _this.size[pushCount],
+                  src: canvas.toDataURL()
+                })
+                resolve()
+              } else {
+                data.push({
+                  size: _this.size[pushCount],
+                  src: canvas.toDataURL()
+                })
+                pushCount++
+                if (pushCount === imageSizeLength) {
                   resolve()
-                } else {
-                  data.push({
-                    size: _this.size[pushCount],
-                    src: canvas.toDataURL()
-                  })
-                  pushCount++
-                  if (pushCount === imageSizeLength) {
-                    resolve()
-                  }
                 }
-              })
+              }
+            })
           }
-        }).then(function () {
+        })
+        .then(function () {
           _this.sendImageData(data)
         })
       },
@@ -65,7 +66,12 @@
           data: data
         })
         .then(function (res) {
-          console.log(res)
+          var link = res.data.link
+          var template = '<a href="'+ link +'" id="download-link">Download</a>'
+
+          document.body.insertAdjacentHTML('beforeend', template)
+          document.getElementById('download-link').click()
+          document.getElementById('download-link').remove()
         })
         .catch(function (err) {
           console.log(err)
