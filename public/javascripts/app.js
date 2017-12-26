@@ -4,14 +4,14 @@
     el: '#app',
     data: {
       download: false,
-      text: 'Tico',
+      text: 'T',
       type: 'square',
       textColor: 'white',
       backgroundColor: 'black',
       scale: {
         width: 160,
         height: 160,
-        fontSize: 48
+        fontSize: 100
       },
       size: [
         16,
