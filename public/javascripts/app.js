@@ -4,10 +4,15 @@
     el: '#app',
     data: {
       download: false,
-      text: 'T',
+      text: 'Tico',
       type: 'square',
       textColor: 'white',
       backgroundColor: 'black',
+      scale: {
+        width: 160,
+        height: 160,
+        fontSize: 48
+      },
       size: [
         16,
         32,
@@ -21,11 +26,12 @@
     methods: {
       getImageData () {
         var _this = this
-        var pushCount = 0
         var data = []
-        var imageSizeLength = _this.size.length
+        var index = 0
         var imageSize = 0
-        var defaltImageSize = document.getElementById('preview').clientWidth
+        var imageSizeLength = _this.size.length
+        var clientImageWidth = document.getElementById('preview').clientWidth
+        var clientImageHeight = document.getElementById('preview').clientHeight
 
         this.download = true
 
@@ -36,24 +42,24 @@
             html2canvas(document.querySelector('#preview'), {
               backgroundColor: null,
               logging: false,
-              scale: imageSize / defaltImageSize,
-              width: imageSize / (imageSize / defaltImageSize),
-              height: imageSize / (imageSize / defaltImageSize),
+              scale: imageSize / clientImageWidth,
+              width: imageSize / (imageSize / clientImageWidth),
+              height: imageSize / (imageSize / clientImageHeight),
             })
             .then(function (canvas) {
               if (imageSizeLength === 1) {
                 data.push({
-                  size: _this.size[pushCount],
+                  size: _this.size[index],
                   src: canvas.toDataURL()
                 })
                 resolve()
               } else {
                 data.push({
-                  size: _this.size[pushCount],
+                  size: _this.size[index],
                   src: canvas.toDataURL()
                 })
-                pushCount++
-                if (pushCount === imageSizeLength) {
+                index++
+                if (index === imageSizeLength) {
                   resolve()
                 }
               }

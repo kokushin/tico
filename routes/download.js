@@ -25,35 +25,28 @@ router.post('/', (req, res) => {
 })
 
 const createImageFile = (src, res) => {
-  let createCount = 0
+  let index = 0
+
   uuid = uuidv4()
 
-  new Promise ((resolve, reject) => {
-    fs.mkdir(`${publicPath}/files/${uuid}`, (err) => {
-      if (err) { throw err }
+  new Promise ((resolve, reject) => fs.mkdir(`${publicPath}/files/${uuid}`, (err) => {
+    if (err) { throw err }
 
-      for (let i = 0; i < src.length; i++) {
-        fs.writeFile(`${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`, src[i].image, (_err) => {
-          if (_err) { throw _err }
+    for (let i = 0; i < src.length; i++) {
+      fs.writeFile(`${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`, src[i].image, (_err) => {
+        if (_err) { throw _err }
 
-          console.log(`Created ${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`)
+        console.log(`Created ${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`)
 
-          createCount++
-          if (createCount === src.length) {
-            resolve()
-          }
-        })
-      }
-    })
-  })
-  .then(() => {
-    convertZip(uuid)
-  })
-  .then(() => {
-    res.send({
-      link: `/files/${uuid}.zip`
-    })
-  })
+        index++
+        if (index === src.length) {
+          resolve()
+        }
+      })
+    }
+  }))
+  .then(() => convertZip(uuid))
+  .then(() => res.send({ link: `/files/${uuid}.zip` }))
 }
 
 const convertZip = (path) => {
@@ -75,8 +68,6 @@ const convertZip = (path) => {
   archive.finalize()
 }
 
-const removeCache = (path) => {
-  del(`${publicPath}/files/${path}`)
-}
+const removeCache = (path) => del(`${publicPath}/files/${path}`)
 
 module.exports = router

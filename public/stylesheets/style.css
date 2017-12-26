@@ -12,16 +12,32 @@ a {
   color: #00B7FF;
 }
 
+.header {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
 .app {
   display: flex;
+  justify-content: center;
+  padding: 2em 0;
 }
 
 .app_input {
   padding: 20px 40px;
 }
 
-.app_input button {
-  margin-top: 2em;
+.app_input_button {
+  margin-top: 3em;
+}
+
+.option_box + .option_box {
+  margin-top: 1.5em;
+}
+
+.option_title {
+  display: block;
+  margin-bottom: .5em;
 }
 
 .app_output_canvas {
@@ -35,16 +51,15 @@ a {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  width: 160px;
-  height: 160px;
+  padding: 10px;
 }
 
 .preview_background {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   margin: 0 auto;
 }
 
