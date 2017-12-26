@@ -33,10 +33,10 @@ const createImageFile = (src, res) => {
     if (err) { throw err }
 
     for (let i = 0; i < src.length; i++) {
-      fs.writeFile(`${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`, src[i].image, (_err) => {
+      fs.writeFile(`${publicPath}/files/${uuid}/icon-${src[i].size}.png`, src[i].image, (_err) => {
         if (_err) { throw _err }
 
-        console.log(`Created ${publicPath}/files/${uuid}/icon${src[i].size}x${src[i].size}.png`)
+        console.log(`Created ${publicPath}/files/${uuid}/icon-${src[i].size}.png`)
 
         index++
         if (index === src.length) {
