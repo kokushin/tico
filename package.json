@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "dev": "npm run start | webpack -w"
   },
   "dependencies": {
     "archiver": "^2.1.0",
@@ -14,9 +15,20 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "morgan": "~1.9.0",
+    "nodemon": "^1.14.3",
     "serve-favicon": "~2.4.5",
     "urlsafe-base64": "^1.0.0",
-    "uuid": "^3.1.0",
-    "nodemon": "^1.14.3"
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "html2canvas": "^1.0.0-alpha.5",
+    "vue": "^2.5.13",
+    "vue-loader": "^13.6.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0"
   }
 }
