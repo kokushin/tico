@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link :href="'https://fonts.googleapis.com/css?family=' + font" rel="stylesheet">
     <header class="header">
       <h1>tico</h1>
     </header>
@@ -21,6 +22,10 @@
           <div class="option_box">
             <label class="option_title" for="scale_height">Height:</label>
             <input type="number" id="scale_height" v-model="scale.height">
+          </div>
+          <div class="option_box">
+            <label class="option_title" for="font">Font:</label>
+            <input type="text" v-model="font" id="font">
           </div>
           <div class="option_box">
             <span class="option_title">Type:</span>
@@ -59,7 +64,7 @@
         <div class="main_output_canvas">
           <div class="preview" :data-type="type" :data-text-color="textColor" :data-background-color="backgroundColor" id="preview">
             <div class="preview_background" :style="{ width: scale.width + 'px', height: scale.height + 'px' }" id="preview-background">
-              <div class="preview_text" :style="{ fontSize: scale.fontSize + 'px' }" id="preview-text">{{ text }}</div>
+              <div class="preview_text" :style="{ fontSize: scale.fontSize + 'px', fontFamily: font }" id="preview-text">{{ text }}</div>
             </div>
           </div>
         </div>
@@ -77,6 +82,7 @@
     data () {
       return {
         download: false,
+        font: 'Roboto',
         text: 'T',
         type: 'square',
         textColor: 'white',
